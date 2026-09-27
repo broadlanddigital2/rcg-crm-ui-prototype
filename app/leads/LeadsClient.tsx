@@ -5,14 +5,15 @@ import { Icon } from "../components/Icon";
 
 type Lead={
   initials:string;name:string;business:string;subject:string;source:string;
+  contactMode:"Online"|"Phone";status:"New"|"Read"|"Responded"|"Quoted";
   tag?:string;time:string;email:string;phone:string;message:string
 };
 
 const leads:Lead[]=[
-  {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",source:"Webform",tag:"Vehicle Based Cold Wash",time:"4h",email:"justin@broadlanddigital.co.uk",phone:"7876221257",message:"Hi,\n\nI’m looking for more information about your vehicle washing services. Could you please send over the available packages and pricing?\n\nThanks,\nJustin"},
-  {initials:"AD",name:"Antonio Domingo",business:"Race Car Graphics Leads (Incoming)",subject:"Custom Race Livery Quote",source:"Instagram",time:"5h",email:"antonio@example.com",phone:"07700 900222",message:"Please can you quote for a custom race livery and sponsor graphics."},
-  {initials:"SM",name:"Sarah Mitchell",business:"Private Customer (Incoming)",subject:"Ceramic Coating Enquiry",source:"Facebook",time:"1d",email:"sarah@example.com",phone:"07700 900333",message:"I would like pricing for ceramic coating on a new vehicle."},
-  {initials:"MT",name:"Mark Thompson",business:"Trade Enquiry (Incoming)",subject:"Van Graphics for Fleet",source:"Webform",time:"1d",email:"mark@example.com",phone:"07700 900444",message:"We need graphics across a fleet of 6 vans."}
+  {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",source:"Web Forms",contactMode:"Online",status:"New",tag:"Vehicle Based Cold Wash",time:"4h",email:"justin@broadlanddigital.co.uk",phone:"7876221257",message:"Hi,\n\nI’m looking for more information about your vehicle washing services. Could you please send over the available packages and pricing?\n\nThanks,\nJustin"},
+  {initials:"AD",name:"Antonio Domingo",business:"Race Car Graphics Leads (Incoming)",subject:"Custom Race Livery Quote",source:"Instagram",contactMode:"Online",status:"Read",time:"5h",email:"antonio@example.com",phone:"07700 900222",message:"Please can you quote for a custom race livery and sponsor graphics."},
+  {initials:"SM",name:"Sarah Mitchell",business:"Private Customer (Incoming)",subject:"Ceramic Coating Enquiry",source:"Facebook",contactMode:"Online",status:"Responded",time:"1d",email:"sarah@example.com",phone:"07700 900333",message:"I would like pricing for ceramic coating on a new vehicle."},
+  {initials:"MT",name:"Mark Thompson",business:"Trade Enquiry (Incoming)",subject:"Van Graphics for Fleet",source:"Phone",contactMode:"Phone",status:"Quoted",time:"1d",email:"mark@example.com",phone:"07700 900444",message:"We need graphics across a fleet of 6 vans."}
 ];
 
 export default function LeadsClient(){
@@ -24,9 +25,9 @@ export default function LeadsClient(){
       <section className="leadColumnList">
         <div className="leadListHead"><h1>Leads</h1><p>Manage enquiries from all channels</p></div>
         <div className="filterChips">
-          <button className="active">All <b>11</b></button><button>Unsorted <b>1</b></button>
-          <button>Website <b>5</b></button><button>Instagram <b>2</b></button>
-          <button>Facebook <b>1</b></button><button>Email <b>2</b></button>
+          <button className="active">All <b>11</b></button><button>New <b>3</b></button>
+          <button>Read <b>2</b></button><button>Responded <b>4</b></button>
+          <button>Online <b>8</b></button><button>Phone <b>3</b></button>
         </div>
         <div className="sortRow">
           <button>Sort by: Latest reply first⌄</button>
@@ -38,7 +39,11 @@ export default function LeadsClient(){
             <div className="leadListBody">
               <div><strong>{l.name}</strong><small>{l.time}</small></div>
               <span>{l.business}</span><h3>{l.subject}</h3>
-              <div className="tagRow"><em><Icon name={l.source==="Webform"?"mail":"messages"} size={13}/>{l.source}</em>{l.tag&&<em className="softTag">{l.tag}</em>}</div>
+              <div className="leadMetaRow">
+                <span className="channelBadge"><Icon name={l.contactMode==="Phone"?"phone":"online"} size={14}/>{l.contactMode}</span>
+                <span className={"statusBadge status-"+l.status.toLowerCase()}>{l.status}</span>
+                {l.tag&&<em className="softTag">{l.tag}</em>}
+              </div>
             </div>
           </button>)}
         </div>
@@ -48,7 +53,11 @@ export default function LeadsClient(){
         <header className="leadDetailTop">
           <div className="identity"><span className="avatar red large">{lead.initials}</span>
             <div><h1>{lead.name}</h1><p>{lead.business}</p>
-              <div className="tagRow"><em className="softTag">Broadland Digital</em>{lead.tag&&<em className="softTag">{lead.tag}</em>}</div>
+              <div className="leadMetaRow">
+                <span className="channelBadge"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={14}/>{lead.contactMode}</span>
+                <span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span>
+                <em className="softTag">Broadland Digital</em>{lead.tag&&<em className="softTag">{lead.tag}</em>}
+              </div>
             </div>
           </div>
           <div className="detailActions"><button>✓ Mark as Closed</button><button>▣ Move To</button><button>◉ Unassigned⌄</button><button>⋮</button></div>
