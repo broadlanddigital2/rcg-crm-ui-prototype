@@ -4,7 +4,7 @@ import { Icon, type IconName } from "./Icon";
 
 type NavKey = "home" | "leads" | "customers" | "suppliers";
 type RailItem = [string, string, string, IconName];
-type MenuItem = { label:string; href:string; count?:number; active?:boolean; level?:0|1; parent?:boolean };
+type MenuItem = { label:string; href:string; count?:number; active?:boolean; level?:0|1; parent?:boolean; cta?:boolean };
 
 const rail: RailItem[] = [
   ["home", "/dashboard", "Home", "home"],
@@ -52,7 +52,7 @@ const menus: Record<NavKey, { title: string; eyebrow: string; items: MenuItem[] 
     title: "Customers",
     items: [
       { label: "All Customers", href: "/customers", count: 24, active: true },
-      { label: "Add Customer", href: "#" },
+      { label: "Add Customer", href: "#", cta: true },
       { label: "Trade Customers", href: "#", count: 8 },
       { label: "Retail Customers", href: "#", count: 16 },
       { label: "Recently Updated", href: "#" }
@@ -63,7 +63,7 @@ const menus: Record<NavKey, { title: string; eyebrow: string; items: MenuItem[] 
     title: "Suppliers",
     items: [
       { label: "All Suppliers", href: "/suppliers", count: 6, active: true },
-      { label: "Add Supplier", href: "#" },
+      { label: "Add Supplier", href: "#", cta: true },
       { label: "Vinyl & Materials", href: "#", count: 3 },
       { label: "Services", href: "#", count: 2 },
       { label: "Other", href: "#", count: 1 }
@@ -95,7 +95,8 @@ export function Shell({ active, children, action }: { active: NavKey; children: 
           "secondaryItem",
           item.active ? "active" : "",
           item.parent ? "parent" : "",
-          item.level === 1 ? "sub" : ""
+          item.level === 1 ? "sub" : "",
+          item.cta ? "cta" : ""
         ].filter(Boolean).join(" ")} key={item.label+i}>
           <span>{item.label}</span>{typeof item.count==="number" && <b>{item.count}</b>}
         </Link>)}
