@@ -1093,3 +1093,9 @@
     width:100%!important;
   }
 }
+
+
+/* ===== Lead arrival time weight ===== */
+.leadArrival>strong{
+  font-weight:400!important;
+}
