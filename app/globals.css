@@ -1128,3 +1128,20 @@
   margin-right:0!important;
   justify-content:flex-end!important;
 }
+
+
+/* ===== Stack recipient and subject in response composer ===== */
+.responseMeta{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+}
+.responseMeta>div{
+  grid-template-columns:72px minmax(0,1fr)!important;
+}
+.responseMeta>div+div{
+  border-left:0!important;
+  border-top:1px solid #eceff1!important;
+}
+.responseMeta input{
+  min-height:36px;
+}
