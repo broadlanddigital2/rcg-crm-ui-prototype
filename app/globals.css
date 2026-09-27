@@ -106,3 +106,79 @@
   .appShell{grid-template-columns:190px minmax(0,1fr)}
   .leadWorkspace{grid-template-columns:470px minmax(0,1fr)}
 }
+
+
+/* ===== RCG NAVIGATION V3: icon rail + secondary menu ===== */
+.appShell{grid-template-columns:118px 236px minmax(0,1fr)!important}
+.primaryRail{
+  position:sticky;top:0;height:100vh;background:linear-gradient(180deg,#10161b 0%,#192229 100%);
+  color:#fff;display:flex;flex-direction:column;align-items:stretch;padding:10px 10px 12px;
+  border-right:1px solid #222d34;z-index:35
+}
+.railBrand{height:76px;display:grid;place-items:center;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:12px}
+.railBrand img{width:96px;max-height:58px;object-fit:contain}
+.railWidgets{display:grid;gap:9px;align-content:start}
+.railWidget{
+  min-height:66px;border-radius:12px;text-decoration:none;color:#cbd3d8;display:grid;place-items:center;
+  align-content:center;gap:6px;padding:8px 5px;transition:.15s ease;border:1px solid transparent
+}
+.railWidget:hover{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.05)}
+.railWidget.active{background:linear-gradient(180deg,#ed1c24,#cf1017);color:#fff;box-shadow:0 10px 22px rgba(237,28,36,.22)}
+.railWidget>span:last-child{font-size:11px;font-weight:700;letter-spacing:.01em}
+.railIcon{position:relative;width:34px;height:30px;display:grid;place-items:center}
+.railIcon b{
+  position:absolute;right:-10px;top:-7px;min-width:21px;height:21px;border-radius:999px;padding:0 5px;
+  display:grid;place-items:center;background:#fff;color:#d9151d;font-size:9px;border:2px solid #d9151d
+}
+.railProfile{margin-top:auto;border-top:1px solid rgba(255,255,255,.08);padding-top:12px;display:grid;justify-items:center;gap:5px}
+.railProfile .avatar{width:42px!important;height:42px!important}
+.railProfile small{font-size:10px;color:#abb5bc}
+
+.secondaryNav{
+  position:sticky;top:0;height:100vh;background:#f0f2f4;border-right:1px solid #dfe3e6;
+  padding:24px 18px 18px;display:flex;flex-direction:column;z-index:30
+}
+.secondaryHeader{padding:0 4px 18px;border-bottom:1px solid #dfe3e6;margin-bottom:14px}
+.secondaryHeader>span{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;color:#8a949d;margin-bottom:7px}
+.secondaryHeader h2{font-size:23px;line-height:1.1;margin:0;color:#161b20}
+.secondaryMenu{display:grid;gap:5px}
+.secondaryItem{
+  min-height:44px;border-radius:9px;padding:0 12px;text-decoration:none;color:#3c454e;display:flex;align-items:center;
+  justify-content:space-between;gap:10px;font-size:13px;font-weight:650;border:1px solid transparent
+}
+.secondaryItem:hover{background:#fff;border-color:#e0e4e7;color:#151a1f}
+.secondaryItem.active{background:#fff;color:#d8171f;border-color:#e1e5e8;box-shadow:0 4px 14px rgba(15,23,42,.05)}
+.secondaryItem.active:before{content:"";width:4px;height:22px;border-radius:999px;background:#e01820;margin-left:-13px;margin-right:3px}
+.secondaryItem b{min-width:24px;height:24px;border-radius:999px;background:#e5e8eb;color:#46505a;display:grid;place-items:center;font-size:10px}
+.secondaryItem.active b{background:#fde4e6;color:#d4171f}
+.secondaryFoot{margin-top:auto;padding:14px 4px 0;border-top:1px solid #dfe3e6}
+.secondaryFoot strong{display:block;font-size:11px;color:#333c45}.secondaryFoot span{display:block;font-size:10px;color:#89939c;margin-top:3px}
+
+.workspace{min-width:0;background:#f7f8fa}
+.topbar{z-index:25}
+@media(min-width:761px){
+  .leadWorkspace{height:calc(100vh - 68px);grid-template-columns:540px minmax(0,1fr)!important}
+}
+@media(min-width:761px) and (max-width:1350px){
+  .appShell{grid-template-columns:104px 210px minmax(0,1fr)!important}
+  .primaryRail{padding-left:8px;padding-right:8px}
+  .railWidget{min-height:62px}
+  .secondaryNav{padding-left:14px;padding-right:14px}
+  .leadWorkspace{grid-template-columns:440px minmax(0,1fr)!important}
+}
+@media(max-width:900px){
+  .appShell{grid-template-columns:92px minmax(0,1fr)!important}
+  .secondaryNav{display:none}
+  .primaryRail{height:100vh;position:sticky;top:0}
+  .railBrand img{width:74px}
+  .railWidget{min-height:58px}
+  .railWidget>span:last-child{font-size:9px}
+}
+@media(max-width:640px){
+  .appShell{grid-template-columns:1fr!important}
+  .primaryRail{position:static;height:auto;display:block;padding:8px}
+  .railBrand{height:58px;margin-bottom:8px}
+  .railWidgets{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+  .railWidget{min-height:54px}
+  .railProfile{display:none}
+}
