@@ -2,7 +2,7 @@ import { Shell, PrimaryButton } from "../components/Shell";
 import { Icon, type IconName } from "../components/Icon";
 
 const leads = [
-  {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",contactMode:"Online",status:"New",serviceType:"Vehicle Washing",tag:"Vehicle Based Cold Wash",time:"4h"},
+  {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",contactMode:"Online",status:"New",serviceType:"Vehicle Washing",time:"4h"},
   {initials:"AD",name:"Antonio Domingo",business:"Race Car Graphics Leads (Incoming)",subject:"Custom Race Livery Quote",contactMode:"Online",status:"Read",serviceType:"Custom Race Livery",time:"5h"},
   {initials:"SM",name:"Sarah Mitchell",business:"Private Customer (Incoming)",subject:"Ceramic Coating Enquiry",contactMode:"Online",status:"Responded",serviceType:"Ceramic Coating",time:"1d"},
   {initials:"MT",name:"Mark Thompson",business:"Trade Enquiry (Incoming)",subject:"Van Graphics for Fleet",contactMode:"Phone",status:"Quoted",serviceType:"Van Graphics",time:"1d"},
