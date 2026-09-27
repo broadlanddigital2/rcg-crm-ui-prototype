@@ -877,3 +877,113 @@
   .leadHeaderFact:nth-child(3),
   .leadHeaderFact:nth-child(4){border-top:1px solid #edf0f2;padding-top:10px}
 }
+
+
+/* ===== Lead header V4: full-width balanced layout ===== */
+.leadDetailTop{
+  display:block!important;
+  padding:14px 18px 0!important;
+  background:#fff;
+}
+.leadHeaderBar{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:0 0 14px;
+}
+.leadHeaderPerson{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex:1 1 auto;
+  min-width:0;
+}
+.leadHeaderName{
+  min-width:0;
+}
+.leadHeaderName h1{
+  margin:0 0 5px!important;
+  font-size:24px!important;
+  line-height:1.05!important;
+  white-space:normal!important;
+}
+.leadHeaderName p{
+  margin:0!important;
+  font-size:12px!important;
+  color:#68727b!important;
+  white-space:normal!important;
+}
+.leadHeaderFacts{
+  width:100%;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  border:1px solid #e3e7ea!important;
+  border-radius:10px!important;
+  overflow:hidden;
+  background:#f9fafb;
+  margin:0 0 12px;
+}
+.leadHeaderFact{
+  min-height:70px;
+  padding:12px 15px!important;
+  display:grid!important;
+  align-content:center;
+  gap:7px;
+  border-right:1px solid #e3e7ea!important;
+  border-top:0!important;
+}
+.leadHeaderFact:last-child{border-right:0!important}
+.leadHeaderFact>span{
+  font-size:9px!important;
+  font-weight:900!important;
+  letter-spacing:.09em!important;
+  text-transform:uppercase!important;
+  color:#8a949d!important;
+}
+.leadHeaderFact>strong{
+  font-size:13px!important;
+  line-height:1.2;
+  color:#1f262c!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+.leadHeaderFact .contactRoute{
+  display:inline-flex!important;
+  width:max-content!important;
+}
+.detailActions{
+  display:flex!important;
+  flex:0 0 auto;
+  gap:8px!important;
+  justify-self:auto!important;
+  align-items:center!important;
+}
+.detailActions>button,
+.actionDropdown,
+.actionDropdownTrigger{
+  width:132px!important;
+  min-width:132px!important;
+  height:40px!important;
+}
+.detailActions .moreAction{
+  width:48px!important;
+  min-width:48px!important;
+}
+.detailTabs{
+  margin:0 -18px;
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
+@media(max-width:1450px){
+  .leadHeaderBar{align-items:flex-start;flex-direction:column}
+  .detailActions{width:100%;justify-content:flex-start!important;flex-wrap:wrap}
+}
+@media(max-width:1100px){
+  .leadHeaderFacts{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .leadHeaderFact:nth-child(2){border-right:0!important}
+  .leadHeaderFact:nth-child(3),
+  .leadHeaderFact:nth-child(4){border-top:1px solid #e3e7ea!important}
+}
