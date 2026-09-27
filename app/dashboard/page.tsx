@@ -1,7 +1,13 @@
 import { Shell, PrimaryButton } from "../components/Shell";
 import { Icon, type IconName } from "../components/Icon";
 
-const leads = [
+type DashboardLead = {
+  initials:string; name:string; business:string; subject:string;
+  contactMode:"Online"|"Phone"; status:"New"|"Read"|"Responded"|"Quoted";
+  serviceType:string; tag?:string; time:string;
+};
+
+const leads: DashboardLead[] = [
   {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",contactMode:"Online",status:"New",serviceType:"Vehicle Washing",time:"4h"},
   {initials:"AD",name:"Antonio Domingo",business:"Race Car Graphics Leads (Incoming)",subject:"Custom Race Livery Quote",contactMode:"Online",status:"Read",serviceType:"Custom Race Livery",time:"5h"},
   {initials:"SM",name:"Sarah Mitchell",business:"Private Customer (Incoming)",subject:"Ceramic Coating Enquiry",contactMode:"Online",status:"Responded",serviceType:"Ceramic Coating",time:"1d"},
