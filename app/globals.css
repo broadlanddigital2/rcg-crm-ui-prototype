@@ -255,3 +255,23 @@
   margin-right:8px;
 }
 .secondaryItem.cta>span{margin-right:auto}
+
+
+/* ===== Lead origin + status labels ===== */
+.leadMetaRow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.channelBadge,.statusBadge{
+  display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:4px 8px;border-radius:999px;
+  font-size:10px;font-weight:800;line-height:1;border:1px solid transparent;white-space:nowrap
+}
+.channelBadge{background:#eef2f5;color:#313a42;border-color:#e0e5e9}
+.channelBadge svg{width:14px;height:14px}
+.statusBadge{letter-spacing:.01em}
+.status-new{background:#ffe8ea;color:#d21720;border-color:#ffc7cb}
+.status-read{background:#edf1f4;color:#58636d;border-color:#dbe1e5}
+.status-responded{background:#e7f7ee;color:#16834b;border-color:#bee8cf}
+.status-quoted{background:#fff2d8;color:#9c6400;border-color:#f3d69a}
+.leadListCard.selected .channelBadge{background:#fff;border-color:#efdcde}
+.leadListCard.selected .status-new{background:#fff;color:#d21720}
+@media(min-width:761px){
+  .channelBadge,.statusBadge{min-height:28px;padding:5px 9px;font-size:11px}
+}
