@@ -54,38 +54,40 @@ export default function LeadsClient(){
 
       <section className="leadDetail">
         <header className="leadDetailTop">
-          <div className="leadHeaderSummary">
+          <div className="leadHeaderBar">
             <div className="leadHeaderPerson">
               <span className="avatar red large">{lead.initials}</span>
-              <div>
+              <div className="leadHeaderName">
                 <h1>{lead.name}</h1>
                 <p>{lead.business}</p>
               </div>
             </div>
-            <div className="leadHeaderFacts">
-              <div className="leadHeaderFact">
-                <span>Contact route</span>
-                <strong className="contactRoute"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={16}/><span>{lead.contactMode}</span></strong>
-              </div>
-              <div className="leadHeaderFact">
-                <span>Status</span>
-                <strong><span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span></strong>
-              </div>
-              <div className="leadHeaderFact">
-                <span>Business</span>
-                <strong>Broadland Digital</strong>
-              </div>
-              <div className="leadHeaderFact">
-                <span>Service</span>
-                <strong>{lead.serviceType}</strong>
-              </div>
+
+            <div className="detailActions">
+              <button>✓ Mark as Closed</button>
+              <ActionDropdown label="▣ Move To" options={["Incoming","Quoted","On Proof","Completed"]}/>
+              <ActionDropdown label="◉ Unassigned" options={["Unassigned","Justin Revell","Chris","Design Team"]}/>
+              <button className="moreAction">⋮</button>
             </div>
           </div>
-          <div className="detailActions">
-            <button>✓ Mark as Closed</button>
-            <ActionDropdown label="▣ Move To" options={["Incoming","Quoted","On Proof","Completed"]}/>
-            <ActionDropdown label="◉ Unassigned" options={["Unassigned","Justin Revell","Chris","Design Team"]}/>
-            <button className="moreAction">⋮</button>
+
+          <div className="leadHeaderFacts">
+            <div className="leadHeaderFact">
+              <span>Contact route</span>
+              <strong className="contactRoute"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={17}/><span>{lead.contactMode}</span></strong>
+            </div>
+            <div className="leadHeaderFact">
+              <span>Status</span>
+              <strong><span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span></strong>
+            </div>
+            <div className="leadHeaderFact">
+              <span>Business</span>
+              <strong>Broadland Digital</strong>
+            </div>
+            <div className="leadHeaderFact">
+              <span>Service enquiry</span>
+              <strong>{lead.serviceType}</strong>
+            </div>
           </div>
         </header>
 
