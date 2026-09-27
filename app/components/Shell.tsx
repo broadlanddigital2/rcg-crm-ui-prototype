@@ -3,22 +3,109 @@ import type { ReactNode } from "react";
 import { Icon, type IconName } from "./Icon";
 
 type NavKey = "home" | "leads" | "customers" | "suppliers";
-type NavItem = [string, string, string, IconName];
-const nav: NavItem[] = [
-  ["home", "/dashboard", "Home", "home"], ["leads", "/leads", "Leads", "leads"],
-  ["customers", "/customers", "Customers", "customers"], ["suppliers", "/suppliers", "Suppliers", "suppliers"],
-  ["tasks", "#", "Tasks", "tasks"], ["calendar", "#", "Calendar", "calendar"], ["messages", "#", "Messages", "messages"],
-  ["reports", "#", "Reports", "reports"], ["settings", "#", "Settings", "settings"]
+type RailItem = [string, string, string, IconName];
+
+const rail: RailItem[] = [
+  ["home", "/dashboard", "Home", "home"],
+  ["leads", "/leads", "Leads", "leads"],
+  ["customers", "/customers", "Customers", "customers"],
+  ["suppliers", "/suppliers", "Suppliers", "suppliers"],
+  ["tasks", "#", "Tasks", "tasks"],
+  ["calendar", "#", "Calendar", "calendar"],
+  ["messages", "#", "Messages", "messages"],
+  ["reports", "#", "Reports", "reports"],
+  ["settings", "#", "Settings", "settings"]
 ];
 
+const menus: Record<NavKey, { title: string; eyebrow: string; items: Array<{label:string;href:string;count?:number;active?:boolean}> }> = {
+  home: {
+    eyebrow: "WORKSPACE",
+    title: "Home",
+    items: [
+      { label: "Overview", href: "/dashboard", active: true },
+      { label: "My Tasks", href: "#", count: 3 },
+      { label: "Recent Activity", href: "#" },
+      { label: "Calendar", href: "#" }
+    ]
+  },
+  leads: {
+    eyebrow: "SALES & ENQUIRIES",
+    title: "Leads",
+    items: [
+      { label: "All Leads", href: "/leads", count: 11, active: true },
+      { label: "Race Car Graphics", href: "#", count: 6 },
+      { label: "Auto Opulence", href: "#", count: 5 },
+      { label: "Web Forms", href: "#", count: 5 },
+      { label: "Instagram", href: "#", count: 2 },
+      { label: "Facebook", href: "#", count: 1 },
+      { label: "Email", href: "#", count: 2 },
+      { label: "Archived", href: "#" }
+    ]
+  },
+  customers: {
+    eyebrow: "CRM",
+    title: "Customers",
+    items: [
+      { label: "All Customers", href: "/customers", count: 24, active: true },
+      { label: "Add Customer", href: "#" },
+      { label: "Trade Customers", href: "#", count: 8 },
+      { label: "Retail Customers", href: "#", count: 16 },
+      { label: "Recently Updated", href: "#" }
+    ]
+  },
+  suppliers: {
+    eyebrow: "CRM",
+    title: "Suppliers",
+    items: [
+      { label: "All Suppliers", href: "/suppliers", count: 6, active: true },
+      { label: "Add Supplier", href: "#" },
+      { label: "Vinyl & Materials", href: "#", count: 3 },
+      { label: "Services", href: "#", count: 2 },
+      { label: "Other", href: "#", count: 1 }
+    ]
+  }
+};
+
 export function Shell({ active, children, action }: { active: NavKey; children: ReactNode; action?: ReactNode }) {
+  const menu = menus[active];
   return <main className="appShell">
-    <aside className="sidebar">
-      <div className="brand"><img src="/rcg-logo-email.png" alt="Race Car Graphics"/></div>
-      <nav className="navList">{nav.map(([key, href, label, icon]) => <Link className={active === key ? "navItem active" : "navItem"} href={href} key={key}><Icon name={icon}/><span>{label}</span>{key === "leads" && <b>11</b>}</Link>)}</nav>
-      <div className="sidebarProfile"><span className="avatar pale">JR</span><div><strong>Justin Revell</strong><small>Admin</small></div></div>
+    <aside className="primaryRail">
+      <div className="railBrand"><img src="/rcg-logo-email.png" alt="Race Car Graphics"/></div>
+      <nav className="railWidgets">
+        {rail.map(([key, href, label, icon]) => <Link className={active === key ? "railWidget active" : "railWidget"} href={href} key={key}>
+          <span className="railIcon"><Icon name={icon} size={25}/>{key === "leads" && <b>11</b>}</span>
+          <span>{label}</span>
+        </Link>)}
+      </nav>
+      <div className="railProfile"><span className="avatar pale">JR</span><small>Admin</small></div>
     </aside>
-    <section className="workspace"><header className="topbar"><div className="globalSearch"><Icon name="search" size={16}/><input placeholder="Search leads, customers, suppliers..."/></div><div className="topActions">{action}<button className="iconButton"><Icon name="bell"/><i/></button><span className="avatar dark">JR</span></div></header>{children}</section>
+
+    <aside className="secondaryNav">
+      <div className="secondaryHeader">
+        <span>{menu.eyebrow}</span>
+        <h2>{menu.title}</h2>
+      </div>
+      <nav className="secondaryMenu">
+        {menu.items.map((item,i)=><Link href={item.href} className={item.active ? "secondaryItem active" : "secondaryItem"} key={item.label+i}>
+          <span>{item.label}</span>{typeof item.count==="number" && <b>{item.count}</b>}
+        </Link>)}
+      </nav>
+      <div className="secondaryFoot">
+        <strong>Race Car Graphics CRM</strong>
+        <span>Design prototype</span>
+      </div>
+    </aside>
+
+    <section className="workspace">
+      <header className="topbar">
+        <div className="globalSearch"><Icon name="search" size={18}/><input placeholder="Search leads, customers, suppliers..."/></div>
+        <div className="topActions">{action}<button className="iconButton"><Icon name="bell"/><i/></button><span className="avatar dark">JR</span></div>
+      </header>
+      {children}
+    </section>
   </main>;
 }
-export function PrimaryButton({ children }: { children: ReactNode }) { return <button className="primaryButton"><Icon name="plus" size={17}/>{children}</button>; }
+
+export function PrimaryButton({ children }: { children: ReactNode }) {
+  return <button className="primaryButton"><Icon name="plus" size={18}/>{children}</button>;
+}
