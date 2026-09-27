@@ -63,7 +63,12 @@ export default function LeadsClient(){
               </div>
             </div>
           </div>
-          <div className="detailActions"><button>✓ Mark as Closed</button><button>▣ Move To</button><button>◉ Unassigned⌄</button><button>⋮</button></div>
+          <div className="detailActions">
+            <button>✓ Mark as Closed</button>
+            <ActionDropdown label="▣ Move To" options={["Incoming","Quoted","On Proof","Completed"]}/>
+            <ActionDropdown label="◉ Unassigned" options={["Unassigned","Justin Revell","Chris","Design Team"]}/>
+            <button className="moreAction">⋮</button>
+          </div>
         </header>
 
         <nav className="detailTabs"><button className="active">Details</button><button>Messages <b>3</b></button><button>Tasks <b>0</b></button><button>Notes <b>0</b></button><button>Activity</button></nav>
@@ -81,8 +86,8 @@ export default function LeadsClient(){
                 <Field label="Email Address" value={lead.email}/>
                 <Field label="Phone Number" value={lead.phone}/>
                 <Field label="Company" value="Auto Opulence"/>
-                <SelectField label="Enquiry Type" value={lead.serviceType}/>
-                <SelectField label="Source" value={lead.source}/>
+                <SelectField label="Enquiry Type" value={lead.serviceType} options={["Vehicle Washing","Vehicle Valeting","Ceramic Coating","Custom Race Livery","Van Graphics","Car Wrap"]}/>
+                <SelectField label="Source" value={lead.source} options={["Web Forms","Enquiry Bot","Facebook","Instagram","WhatsApp","Phone"]}/>
                 <div className="field"><span>Status</span><div className="statusField"><span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span></div></div>
               </div>
               <div className="contactContext">
@@ -123,6 +128,30 @@ export default function LeadsClient(){
 function Field({label,value,wide=false}:{label:string;value:string;wide?:boolean}){
   return <label className={wide?"field wide":"field"}><span>{label}</span><input defaultValue={value}/></label>
 }
-function SelectField({label,value}:{label:string;value:string}){
-  return <label className="field"><span>{label}</span><select defaultValue={value}><option>{value}</option></select></label>
+function SelectField({label,value,options}:{label:string;value:string;options:string[]}){
+  const [selected,setSelected]=useState(value);
+  const [open,setOpen]=useState(false);
+  return <div className={"field slideSelect "+(open?"open":"")}>
+    <span>{label}</span>
+    <div className="dropdownControl">
+      <button type="button" className="dropdownTrigger fieldDropdownTrigger" onClick={()=>setOpen(!open)} aria-expanded={open}>
+        <span>{selected}</span><b>⌄</b>
+      </button>
+      <div className="dropdownMenu fieldDropdownMenu">
+        {options.map(option=><button type="button" className={option===selected?"selected":""} key={option} onClick={()=>{setSelected(option);setOpen(false)}}>{option}</button>)}
+      </div>
+    </div>
+  </div>
+}
+
+function ActionDropdown({label,options}:{label:string;options:string[]}){
+  const [open,setOpen]=useState(false);
+  return <div className={"actionDropdown "+(open?"open":"")}>
+    <button type="button" className="dropdownTrigger actionDropdownTrigger" onClick={()=>setOpen(!open)} aria-expanded={open}>
+      <span>{label}</span><b>⌄</b>
+    </button>
+    <div className="dropdownMenu actionDropdownMenu">
+      {options.map(option=><button type="button" key={option} onClick={()=>setOpen(false)}>{option}</button>)}
+    </div>
+  </div>
 }
