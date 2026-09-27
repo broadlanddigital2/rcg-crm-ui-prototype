@@ -31,10 +31,10 @@ export default function Dashboard(){return <Shell active="home" action={<Primary
         </div>)}
       </div>
     </section>
-    <section className="panel"><PanelHead title="Upcoming Tasks"/><div className="taskList">{tasks.map((t,i)=><div className="taskRow" key={t[0]}><span className="taskCheck"/><strong>{t[0]}</strong><small className={i<2?"urgent":""}>{t[1]}</small></div>)}</div><div className="channelBlock"><PanelHead title="Channel Activity" suffix="Last 7 days"/><div className="channels"><Channel icon="mail" label="Webform"/><Channel icon="messages" label="Instagram"/><Channel icon="messages" label="Facebook"/><Channel icon="mail" label="Email"/><Channel icon="phone" label="Phone"/></div></div></section>
+    <section className="panel"><PanelHead title="Upcoming Tasks"/><div className="taskList">{tasks.map((t,i)=><div className="taskRow" key={t[0]}><span className="taskCheck"/><strong>{t[0]}</strong><small className={i<2?"urgent":""}>{t[1]}</small></div>)}</div><div className="channelBlock"><PanelHead title="Channel Activity" suffix="Last 7 days"/><div className="channels"><Channel icon="mail" label="Web Forms" count={5}/><Channel icon="messages" label="Instagram" count={2}/><Channel icon="messages" label="Facebook" count={1}/><Channel icon="mail" label="Email" count={2}/><Channel icon="phone" label="Phone" count={3}/></div></div></section>
   </div>
 </div></Shell>}
 
 function Stat({icon,value,label,tone}:{icon:IconName;value:string;label:string;tone:string}){return <div className="statCard"><span className={`statIcon ${tone}`}><Icon name={icon}/></span><div><strong>{value}</strong><span>{label}</span></div></div>}
 function PanelHead({title,suffix="View all"}:{title:string;suffix?:string}){return <div className="panelHead"><h2>{title}</h2><button>{suffix}</button></div>}
-function Channel({icon,label}:{icon:IconName;label:string}){return <div className="channelItem"><span><Icon name={icon}/></span><small>{label}</small></div>}
+function Channel({icon,label,count}:{icon:IconName;label:string;count:number}){return <div className="channelItem"><span className="channelIcon"><Icon name={icon}/><b>{count}</b></span><small>{label}</small></div>}
