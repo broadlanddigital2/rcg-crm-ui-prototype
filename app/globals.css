@@ -1116,3 +1116,15 @@
   padding-left:18px!important;
   padding-right:18px!important;
 }
+
+
+/* ===== Align top lead actions to right edge of summary box ===== */
+.leadHeaderBar{
+  width:100%!important;
+  justify-content:space-between!important;
+}
+.detailActions{
+  margin-left:auto!important;
+  margin-right:0!important;
+  justify-content:flex-end!important;
+}
