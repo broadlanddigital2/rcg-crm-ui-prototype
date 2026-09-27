@@ -125,7 +125,7 @@ export default function LeadsClient(){
               <span className="responseFrom">From: Race Car Graphics</span>
             </div>
             <div className="responseMeta">
-              <div><span>To</span><strong>{lead.email}</strong></div>
+              <div><span>To</span><input defaultValue={lead.email}/></div>
               <div><span>Subject</span><input defaultValue={"Re: "+lead.subject}/></div>
             </div>
             <textarea className="responseTextarea" placeholder="Write your response here…"/>
