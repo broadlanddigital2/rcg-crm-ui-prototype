@@ -54,12 +54,30 @@ export default function LeadsClient(){
 
       <section className="leadDetail">
         <header className="leadDetailTop">
-          <div className="identity"><span className="avatar red large">{lead.initials}</span>
-            <div><h1>{lead.name}</h1><p>{lead.business}</p>
-              <div className="leadMetaRow">
-                <span className="contactRoute"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={15}/><span>{lead.contactMode}</span></span>
-                <span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span>
-                <em className="softTag">Broadland Digital</em>{lead.tag&&<em className="softTag">{lead.tag}</em>}
+          <div className="leadHeaderSummary">
+            <div className="leadHeaderPerson">
+              <span className="avatar red large">{lead.initials}</span>
+              <div>
+                <h1>{lead.name}</h1>
+                <p>{lead.business}</p>
+              </div>
+            </div>
+            <div className="leadHeaderFacts">
+              <div className="leadHeaderFact">
+                <span>Contact route</span>
+                <strong className="contactRoute"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={16}/><span>{lead.contactMode}</span></strong>
+              </div>
+              <div className="leadHeaderFact">
+                <span>Status</span>
+                <strong><span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span></strong>
+              </div>
+              <div className="leadHeaderFact">
+                <span>Business</span>
+                <strong>Broadland Digital</strong>
+              </div>
+              <div className="leadHeaderFact">
+                <span>Service</span>
+                <strong>{lead.serviceType}</strong>
               </div>
             </div>
           </div>
