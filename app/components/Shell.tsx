@@ -34,9 +34,17 @@ const menus: Record<NavKey, { title: string; eyebrow: string; items: MenuItem[] 
     title: "Leads",
     items: [
       { label: "Race Car Graphics", href: "/leads", count: 6, active: true, parent: true, level: 0 },
-      { label: "Web Forms", href: "/leads", count: 6, level: 1 },
+      { label: "Web Forms", href: "/leads", count: 2, level: 1 },
+      { label: "Enquiry Bot", href: "/leads", count: 1, level: 1 },
+      { label: "Facebook", href: "/leads", count: 1, level: 1 },
+      { label: "Instagram", href: "/leads", count: 1, level: 1 },
+      { label: "WhatsApp", href: "/leads", count: 1, level: 1 },
       { label: "Auto Opulence", href: "/leads", count: 5, parent: true, level: 0 },
-      { label: "Web Forms", href: "/leads", count: 5, level: 1 }
+      { label: "Web Forms", href: "/leads", count: 2, level: 1 },
+      { label: "Enquiry Bot", href: "/leads", count: 1, level: 1 },
+      { label: "Facebook", href: "/leads", count: 1, level: 1 },
+      { label: "Instagram", href: "/leads", count: 1, level: 1 },
+      { label: "WhatsApp", href: "/leads", count: 0, level: 1 }
     ]
   },
   customers: {
