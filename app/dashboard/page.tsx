@@ -2,11 +2,11 @@ import { Shell, PrimaryButton } from "../components/Shell";
 import { Icon, type IconName } from "../components/Icon";
 
 const leads = [
-  {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",contactMode:"Online",status:"New",tag:"Vehicle Based Cold Wash",time:"4h"},
-  {initials:"AD",name:"Antonio Domingo",business:"Race Car Graphics Leads (Incoming)",subject:"Custom Race Livery Quote",contactMode:"Online",status:"Read",time:"5h"},
-  {initials:"SM",name:"Sarah Mitchell",business:"Private Customer (Incoming)",subject:"Ceramic Coating Enquiry",contactMode:"Online",status:"Responded",time:"1d"},
-  {initials:"MT",name:"Mark Thompson",business:"Trade Enquiry (Incoming)",subject:"Van Graphics for Fleet",contactMode:"Phone",status:"Quoted",time:"1d"},
-  {initials:"EC",name:"Emma Clarke",business:"Race Car Graphics Leads (Incoming)",subject:"Car Wrap Enquiry",contactMode:"Online",status:"New",time:"1d"}
+  {initials:"JR",name:"Justin Revell",business:"Auto Opulence (Incoming)",subject:"Vehicle Washing Inquiry Details Needed",contactMode:"Online",status:"New",serviceType:"Vehicle Washing",tag:"Vehicle Based Cold Wash",time:"4h"},
+  {initials:"AD",name:"Antonio Domingo",business:"Race Car Graphics Leads (Incoming)",subject:"Custom Race Livery Quote",contactMode:"Online",status:"Read",serviceType:"Custom Race Livery",time:"5h"},
+  {initials:"SM",name:"Sarah Mitchell",business:"Private Customer (Incoming)",subject:"Ceramic Coating Enquiry",contactMode:"Online",status:"Responded",serviceType:"Ceramic Coating",time:"1d"},
+  {initials:"MT",name:"Mark Thompson",business:"Trade Enquiry (Incoming)",subject:"Van Graphics for Fleet",contactMode:"Phone",status:"Quoted",serviceType:"Van Graphics",time:"1d"},
+  {initials:"EC",name:"Emma Clarke",business:"Race Car Graphics Leads (Incoming)",subject:"Car Wrap Enquiry",contactMode:"Online",status:"New",serviceType:"Car Wrap",time:"1d"}
 ];
 const tasks = [["Follow up Auto Opulence enquiry","Today 10:00"],["Send quote to Antonio","Today 14:00"],["Call Sarah re ceramic coating","Tomorrow 08:00"],["Prepare artwork for Thompson","Tomorrow 11:00"]];
 
@@ -19,14 +19,16 @@ export default function Dashboard(){return <Shell active="home" action={<Primary
         {leads.map((l,i)=><div className="dashboardLeadCard" key={l.name}>
           <span className={`avatar ${i===0?"red":i===1?"green":i===2?"pink":i===3?"blue":"purple"}`}>{l.initials}</span>
           <div className="dashboardLeadBody">
-            <div className="dashboardLeadTop"><strong>{l.name}</strong><small>{l.time}</small></div>
-            <span className="dashboardLeadBusiness">{l.business}</span>
+            <div className="dashboardLeadTop">
+              <div><strong>{l.name}</strong><span className="dashboardLeadBusiness">{l.business}</span></div>
+              <div className="leadArrival"><strong>{l.time}</strong><span className={"statusBadge status-"+l.status.toLowerCase()}>{l.status}</span></div>
+            </div>
             <h3>{l.subject}</h3>
             <div className="leadMetaRow">
               <span className="contactRoute"><Icon name={l.contactMode==="Phone"?"phone":"online"} size={15}/><span>{l.contactMode}</span></span>
-              <span className={"statusBadge status-"+l.status.toLowerCase()}>{l.status}</span>
               {l.tag&&<em className="softTag">{l.tag}</em>}
             </div>
+            <div className="serviceEnquiryType"><span>Service enquiry</span><strong>{l.serviceType}</strong></div>
           </div>
         </div>)}
       </div>
