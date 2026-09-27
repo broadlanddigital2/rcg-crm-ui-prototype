@@ -4,6 +4,7 @@ import { Icon, type IconName } from "./Icon";
 
 type NavKey = "home" | "leads" | "customers" | "suppliers";
 type RailItem = [string, string, string, IconName];
+type MenuItem = { label:string; href:string; count?:number; active?:boolean; level?:0|1; parent?:boolean };
 
 const rail: RailItem[] = [
   ["home", "/dashboard", "Home", "home"],
@@ -17,7 +18,7 @@ const rail: RailItem[] = [
   ["settings", "#", "Settings", "settings"]
 ];
 
-const menus: Record<NavKey, { title: string; eyebrow: string; items: Array<{label:string;href:string;count?:number;active?:boolean}> }> = {
+const menus: Record<NavKey, { title: string; eyebrow: string; items: MenuItem[] }> = {
   home: {
     eyebrow: "WORKSPACE",
     title: "Home",
@@ -32,14 +33,10 @@ const menus: Record<NavKey, { title: string; eyebrow: string; items: Array<{labe
     eyebrow: "SALES & ENQUIRIES",
     title: "Leads",
     items: [
-      { label: "All Leads", href: "/leads", count: 11, active: true },
-      { label: "Race Car Graphics", href: "#", count: 6 },
-      { label: "Auto Opulence", href: "#", count: 5 },
-      { label: "Web Forms", href: "#", count: 5 },
-      { label: "Instagram", href: "#", count: 2 },
-      { label: "Facebook", href: "#", count: 1 },
-      { label: "Email", href: "#", count: 2 },
-      { label: "Archived", href: "#" }
+      { label: "Race Car Graphics", href: "/leads", count: 6, active: true, parent: true, level: 0 },
+      { label: "Web Forms", href: "/leads", count: 6, level: 1 },
+      { label: "Auto Opulence", href: "/leads", count: 5, parent: true, level: 0 },
+      { label: "Web Forms", href: "/leads", count: 5, level: 1 }
     ]
   },
   customers: {
@@ -86,7 +83,12 @@ export function Shell({ active, children, action }: { active: NavKey; children: 
         <h2>{menu.title}</h2>
       </div>
       <nav className="secondaryMenu">
-        {menu.items.map((item,i)=><Link href={item.href} className={item.active ? "secondaryItem active" : "secondaryItem"} key={item.label+i}>
+        {menu.items.map((item,i)=><Link href={item.href} className={[
+          "secondaryItem",
+          item.active ? "active" : "",
+          item.parent ? "parent" : "",
+          item.level === 1 ? "sub" : ""
+        ].filter(Boolean).join(" ")} key={item.label+i}>
           <span>{item.label}</span>{typeof item.count==="number" && <b>{item.count}</b>}
         </Link>)}
       </nav>
