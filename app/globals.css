@@ -667,3 +667,32 @@
     min-width:42px!important;
   }
 }
+
+
+/* ===== Remove Contact Information internal scroller ===== */
+.leadDetailSplit{
+  grid-template-rows:auto minmax(320px,1fr)!important;
+}
+.contactHalf{
+  height:auto!important;
+  min-height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+  scrollbar-width:none!important;
+}
+.contactHalf::-webkit-scrollbar{
+  width:0!important;
+  height:0!important;
+  display:none!important;
+}
+.contactOverview{
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+.contactHalf .formGrid,
+.contactHalf .contactContext{
+  max-height:none!important;
+  overflow:visible!important;
+}
