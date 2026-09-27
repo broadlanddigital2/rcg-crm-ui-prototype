@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 export type IconName =
   | "home" | "leads" | "customers" | "suppliers" | "tasks" | "calendar"
   | "messages" | "reports" | "settings" | "search" | "bell" | "plus"
-  | "reply" | "note" | "phone" | "trash" | "tag" | "mail";
+  | "reply" | "note" | "phone" | "trash" | "tag" | "mail" | "online";
 
 const paths: Record<IconName, ReactNode> = {
   home: <><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></>,
@@ -23,7 +23,8 @@ const paths: Record<IconName, ReactNode> = {
   phone: <path d="M7 3 4 5c-.7.5-.8 1.4-.5 2.2 2.8 6.5 6.5 10.2 13 13 .8.3 1.7.2 2.2-.5l2-3-5-3-2 2c-2.3-1.1-4.1-2.9-5.2-5.2l2-2z"/>,
   trash: <><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14"/></>,
   tag: <><path d="M20 13 13 20 4 11V4h7z"/><circle cx="8.5" cy="8.5" r="1"/></>,
-  mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>
+  mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></>,
+  online: <><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21M12 3C9.8 5.5 8.7 8.5 8.7 12S9.8 18.5 12 21"/></>
 };
 
 export function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
