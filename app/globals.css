@@ -362,3 +362,78 @@
     height:30px!important;
   }
 }
+
+
+/* ===== Lead arrival/status hierarchy ===== */
+.leadCardTop,
+.dashboardLeadTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.leadCardIdentity{min-width:0}
+.leadCardIdentity>strong{
+  display:block;
+  font-size:14px;
+  line-height:1.2;
+}
+.leadCardIdentity>span{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+  color:#78818a;
+}
+.leadArrival{
+  flex:0 0 auto;
+  display:grid;
+  justify-items:end;
+  gap:6px;
+  min-width:72px;
+}
+.leadArrival>strong{
+  font-size:15px!important;
+  line-height:1;
+  font-weight:900!important;
+  color:#15191d;
+}
+.leadArrival .statusBadge{
+  min-width:64px;
+  justify-content:center;
+}
+.serviceEnquiryType{
+  margin-top:9px;
+  padding-top:8px;
+  border-top:1px solid #eef1f3;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-width:0;
+}
+.serviceEnquiryType span{
+  font-size:9px;
+  color:#8a939b;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.serviceEnquiryType strong{
+  font-size:10px;
+  color:#4a535c;
+  font-weight:700;
+}
+.dashboardLeadTop>div:first-child{min-width:0}
+.dashboardLeadTop>div:first-child>strong{
+  display:block;
+  font-size:13px;
+  line-height:1.2;
+}
+.dashboardLeadTop .dashboardLeadBusiness{
+  display:block;
+  margin-top:3px;
+}
+@media(min-width:761px){
+  .leadArrival>strong{font-size:17px!important}
+  .leadArrival{min-width:78px}
+  .serviceEnquiryType span{font-size:10px}
+  .serviceEnquiryType strong{font-size:11px}
+}
