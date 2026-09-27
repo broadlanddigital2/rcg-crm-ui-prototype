@@ -987,3 +987,109 @@
   .leadHeaderFact:nth-child(3),
   .leadHeaderFact:nth-child(4){border-top:1px solid #e3e7ea!important}
 }
+
+
+/* ===== Lead header V5: actions beside name, compact controls ===== */
+.leadHeaderBar{
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:18px!important;
+}
+.leadHeaderPerson{
+  flex:0 1 250px!important;
+  min-width:190px!important;
+  max-width:270px!important;
+}
+.leadHeaderName h1{
+  font-size:22px!important;
+  line-height:1.05!important;
+}
+.leadHeaderName p{
+  font-size:11px!important;
+  line-height:1.3!important;
+}
+.detailActions{
+  width:auto!important;
+  display:flex!important;
+  flex:0 0 auto!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:7px!important;
+  margin:0!important;
+}
+.detailActions>button,
+.detailActions .actionDropdown,
+.detailActions .actionDropdownTrigger{
+  width:104px!important;
+  min-width:104px!important;
+  height:34px!important;
+}
+.detailActions>button{
+  padding:0 9px!important;
+  font-size:9px!important;
+  border-radius:6px!important;
+}
+.detailActions .moreAction{
+  width:38px!important;
+  min-width:38px!important;
+  height:34px!important;
+  font-size:17px!important;
+  line-height:1!important;
+}
+.actionDropdown{
+  width:104px!important;
+  min-width:104px!important;
+  height:34px!important;
+}
+.actionDropdownTrigger{
+  width:104px!important;
+  min-width:104px!important;
+  height:34px!important;
+  padding:0 8px 0 9px!important;
+  gap:6px!important;
+  font-size:9px!important;
+  justify-content:space-between!important;
+}
+.actionDropdownTrigger>span{
+  display:block;
+  min-width:0;
+  white-space:nowrap;
+  line-height:1;
+}
+.actionDropdownTrigger>b{
+  display:grid!important;
+  place-items:center!important;
+  flex:0 0 16px!important;
+  width:16px!important;
+  height:16px!important;
+  margin:0!important;
+  padding:0!important;
+  font-size:17px!important;
+  font-weight:900!important;
+  line-height:16px!important;
+  transform-origin:center!important;
+}
+.actionDropdown.open .actionDropdownTrigger>b{
+  transform:rotate(180deg)!important;
+}
+.leadHeaderFacts{
+  margin-top:0!important;
+  clear:both;
+}
+@media(max-width:1220px){
+  .leadHeaderBar{
+    flex-wrap:wrap!important;
+    align-items:flex-start!important;
+  }
+  .leadHeaderPerson{
+    flex:1 1 100%!important;
+    max-width:none!important;
+  }
+  .detailActions{
+    width:100%!important;
+  }
+}
