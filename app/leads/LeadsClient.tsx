@@ -40,7 +40,7 @@ export default function LeadsClient(){
               <div><strong>{l.name}</strong><small>{l.time}</small></div>
               <span>{l.business}</span><h3>{l.subject}</h3>
               <div className="leadMetaRow">
-                <span className="channelBadge"><Icon name={l.contactMode==="Phone"?"phone":"online"} size={14}/>{l.contactMode}</span>
+                <span className="contactRoute"><Icon name={l.contactMode==="Phone"?"phone":"online"} size={15}/><span>{l.contactMode}</span></span>
                 <span className={"statusBadge status-"+l.status.toLowerCase()}>{l.status}</span>
                 {l.tag&&<em className="softTag">{l.tag}</em>}
               </div>
@@ -54,7 +54,7 @@ export default function LeadsClient(){
           <div className="identity"><span className="avatar red large">{lead.initials}</span>
             <div><h1>{lead.name}</h1><p>{lead.business}</p>
               <div className="leadMetaRow">
-                <span className="channelBadge"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={14}/>{lead.contactMode}</span>
+                <span className="contactRoute"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={15}/><span>{lead.contactMode}</span></span>
                 <span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span>
                 <em className="softTag">Broadland Digital</em>{lead.tag&&<em className="softTag">{lead.tag}</em>}
               </div>
