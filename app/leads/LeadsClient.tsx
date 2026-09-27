@@ -68,37 +68,52 @@ export default function LeadsClient(){
 
         <nav className="detailTabs"><button className="active">Details</button><button>Messages <b>3</b></button><button>Tasks <b>0</b></button><button>Notes <b>0</b></button><button>Activity</button></nav>
 
-        <div className="detailGrid">
-          <section className="detailCard">
-            <h2>Contact Information</h2>
-            <div className="formGrid two">
-              <Field label="First Name" value={lead.name.split(" ")[0]}/>
-              <Field label="Last Name" value={lead.name.split(" ").slice(1).join(" ")}/>
-              <Field label="Email Address" value={lead.email} wide/>
-              <Field label="Phone Number" value={lead.phone} wide/>
-              <Field label="Company" value="Auto Opulence" wide/>
-              <SelectField label="Enquiry Type" value="Vehicle Washing"/>
-              <SelectField label="Source" value={lead.source}/>
+        <div className="leadDetailSplit">
+          <section className="contactHalf">
+            <div className="sectionTitleRow">
+              <div><span>CONTACT</span><h2>Contact Information</h2></div>
+              <button className="secondaryButton">Edit contact</button>
+            </div>
+            <div className="contactOverview">
+              <div className="formGrid two">
+                <Field label="First Name" value={lead.name.split(" ")[0]}/>
+                <Field label="Last Name" value={lead.name.split(" ").slice(1).join(" ")}/>
+                <Field label="Email Address" value={lead.email}/>
+                <Field label="Phone Number" value={lead.phone}/>
+                <Field label="Company" value="Auto Opulence"/>
+                <SelectField label="Enquiry Type" value={lead.serviceType}/>
+                <SelectField label="Source" value={lead.source}/>
+                <div className="field"><span>Status</span><div className="statusField"><span className={"statusBadge status-"+lead.status.toLowerCase()}>{lead.status}</span></div></div>
+              </div>
+              <div className="contactContext">
+                <span className="contextLabel">Latest enquiry</span>
+                <strong>{lead.subject}</strong>
+                <p>{lead.message}</p>
+                <div className="tagRow"><span className="contactRoute"><Icon name={lead.contactMode==="Phone"?"phone":"online"} size={15}/><span>{lead.contactMode}</span></span>{lead.tag&&<em className="softTag">{lead.tag}</em>}</div>
+              </div>
             </div>
           </section>
 
-          <section className="detailCard enquiry">
-            <h2>Enquiry Details</h2>
-            <Field label="Subject" value={lead.subject} wide/>
-            <label className="field wide"><span>Message</span><textarea defaultValue={lead.message}/></label>
-            <div className="field"><span>Tags</span><div className="tagRow"><em className="softTag">Broadland Digital</em>{lead.tag&&<em className="softTag">{lead.tag}</em>}<button className="addTag">+ Add Tag</button></div></div>
+          <section className="responseHalf">
+            <div className="responseHeader">
+              <div><span>RESPONSE</span><h2>Reply to {lead.name}</h2></div>
+              <span className="responseFrom">From: Race Car Graphics</span>
+            </div>
+            <div className="responseMeta">
+              <div><span>To</span><strong>{lead.email}</strong></div>
+              <div><span>Subject</span><input defaultValue={"Re: "+lead.subject}/></div>
+            </div>
+            <textarea className="responseTextarea" placeholder="Write your response here…"/>
+            <div className="responseFooter">
+              <div className="quickActions">
+                <button><Icon name="note"/>Add Note</button>
+                <button><Icon name="tasks"/>Create Task</button>
+                <button><Icon name="phone"/>Log Call</button>
+                <button><Icon name="trash"/>Bin It</button>
+              </div>
+              <button className="sendResponse"><Icon name="reply"/>Send Response</button>
+            </div>
           </section>
-        </div>
-
-        <div className="detailBottom">
-          <button className="saveButton">Save Changes</button>
-          <div className="quickActions">
-            <button className="reply"><Icon name="reply"/>Reply</button>
-            <button><Icon name="note"/>Add Note</button>
-            <button><Icon name="tasks"/>Create Task</button>
-            <button><Icon name="phone"/>Log Call</button>
-            <button><Icon name="trash"/>Bin It</button>
-          </div>
         </div>
       </section>
     </div>
