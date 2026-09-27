@@ -337,3 +337,28 @@
   .dashboardLeadBody h3{font-size:13px}
   .channelIcon b{min-width:22px;height:22px;font-size:10px}
 }
+
+
+/* ===== Dashboard stat icon emphasis ===== */
+.statIcon{
+  width:52px!important;
+  height:52px!important;
+  border-radius:10px!important;
+  color:#fff!important;
+}
+.statIcon svg{
+  width:28px!important;
+  height:28px!important;
+  stroke:#fff!important;
+  stroke-width:2!important;
+}
+@media(min-width:1200px){
+  .statIcon{
+    width:56px!important;
+    height:56px!important;
+  }
+  .statIcon svg{
+    width:30px!important;
+    height:30px!important;
+  }
+}
