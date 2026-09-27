@@ -776,3 +776,104 @@
   }
   .identity{padding-right:10px}
 }
+
+
+/* ===== Full-width lead contact summary ===== */
+.leadDetailTop{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:12px!important;
+  padding:14px 18px 12px!important;
+}
+.leadHeaderSummary{
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(240px,.9fr) minmax(0,1.8fr);
+  gap:18px;
+  align-items:stretch;
+  background:#fff;
+  border:1px solid #e4e7ea;
+  border-radius:10px;
+  padding:14px 16px;
+}
+.leadHeaderPerson{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  min-width:0;
+}
+.leadHeaderPerson>div{min-width:0}
+.leadHeaderPerson h1{
+  margin:0 0 4px;
+  font-size:22px;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.leadHeaderPerson p{
+  margin:0;
+  font-size:12px;
+  color:#68727b;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.leadHeaderFacts{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border-left:1px solid #edf0f2;
+  min-width:0;
+}
+.leadHeaderFact{
+  min-width:0;
+  padding:4px 14px;
+  display:grid;
+  align-content:center;
+  gap:6px;
+  border-right:1px solid #edf0f2;
+}
+.leadHeaderFact:last-child{border-right:0}
+.leadHeaderFact>span{
+  display:block;
+  font-size:9px;
+  font-weight:800;
+  color:#8a949d;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.leadHeaderFact>strong{
+  min-width:0;
+  font-size:12px;
+  color:#20272d;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.leadHeaderFact .contactRoute{
+  display:inline-flex;
+  width:max-content;
+}
+.leadHeaderFact .statusBadge{
+  min-width:0;
+}
+.detailActions{
+  justify-self:end;
+}
+@media(max-width:1400px){
+  .leadHeaderSummary{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .leadHeaderFacts{
+    border-left:0;
+    border-top:1px solid #edf0f2;
+    padding-top:10px;
+  }
+}
+@media(max-width:1050px){
+  .leadHeaderFacts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .leadHeaderFact:nth-child(2){border-right:0}
+  .leadHeaderFact:nth-child(3),
+  .leadHeaderFact:nth-child(4){border-top:1px solid #edf0f2;padding-top:10px}
+}
