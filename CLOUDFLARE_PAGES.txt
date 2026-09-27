@@ -1,0 +1,9 @@
+Cloudflare Pages settings
+
+Framework preset: Next.js (Static HTML Export)
+Production branch: main
+Build command: npm run build
+Build output directory: out
+Root directory: /
+
+This prototype is static/design-only and has no production CRM integrations.
