@@ -1107,3 +1107,12 @@
   height:54px!important;
   align-items:flex-end!important;
 }
+
+
+/* ===== Align lead tabs with content box ===== */
+.detailTabs{
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
