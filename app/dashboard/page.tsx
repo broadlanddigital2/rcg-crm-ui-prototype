@@ -1,0 +1,14 @@
+import { Shell, PrimaryButton } from "../components/Shell";
+import { Icon, type IconName } from "../components/Icon";
+
+const leads = [["JR","Justin Revell","Vehicle Washing Inquiry Details Needed","4h"],["AD","Antonio Domingo","Custom Race Livery Quote","5h"],["SM","Sarah Mitchell","Ceramic Coating Enquiry","1d"],["MT","Mark Thompson","Van Graphics for Fleet","1d"],["EC","Emma Clarke","Car Wrap Enquiry","1d"]];
+const tasks = [["Follow up Auto Opulence enquiry","Today 10:00"],["Send quote to Antonio","Today 14:00"],["Call Sarah re ceramic coating","Tomorrow 08:00"],["Prepare artwork for Thompson","Tomorrow 11:00"]];
+export default function Dashboard(){return <Shell active="home" action={<PrimaryButton>New Lead</PrimaryButton>}><div className="page dashboardPage">
+  <div className="pageHeading"><div><h1>Good morning, Justin</h1><p>Here&apos;s what&apos;s happening with your business today.</p></div><span>Saturday 27 September 2026</span></div>
+  <div className="statGrid"><Stat icon="leads" value="11" label="Open Leads" tone="red"/><Stat icon="tasks" value="3" label="Tasks Due" tone="blue"/><Stat icon="customers" value="24" label="Customers" tone="green"/><Stat icon="suppliers" value="6" label="Suppliers" tone="purple"/></div>
+  <div className="dashboardGrid"><section className="panel"><PanelHead title="Recent Leads"/><div className="compactList">{leads.map((l,i)=><div className="compactLead" key={l[1]}><span className={`avatar ${i===0?"red":i===1?"green":i===2?"pink":i===3?"blue":"purple"}`}>{l[0]}</span><div><strong>{l[1]}</strong><span>{l[2]}</span></div><small>{l[3]}</small></div>)}</div></section>
+  <section className="panel"><PanelHead title="Upcoming Tasks"/><div className="taskList">{tasks.map((t,i)=><div className="taskRow" key={t[0]}><span className="taskCheck"/><strong>{t[0]}</strong><small className={i<2?"urgent":""}>{t[1]}</small></div>)}</div><div className="channelBlock"><PanelHead title="Channel Activity" suffix="Last 7 days"/><div className="channels"><Channel icon="mail" label="Webform"/><Channel icon="messages" label="Instagram"/><Channel icon="messages" label="Facebook"/><Channel icon="mail" label="Email"/><Channel icon="phone" label="Phone"/></div></div></section></div>
+</div></Shell>}
+function Stat({icon,value,label,tone}:{icon:IconName;value:string;label:string;tone:string}){return <div className="statCard"><span className={`statIcon ${tone}`}><Icon name={icon}/></span><div><strong>{value}</strong><span>{label}</span></div></div>}
+function PanelHead({title,suffix="View all"}:{title:string;suffix?:string}){return <div className="panelHead"><h2>{title}</h2><button>{suffix}</button></div>}
+function Channel({icon,label}:{icon:IconName;label:string}){return <div className="channelItem"><span><Icon name={icon}/></span><small>{label}</small></div>}
