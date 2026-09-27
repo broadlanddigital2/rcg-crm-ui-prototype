@@ -1099,3 +1099,11 @@
 .leadArrival>strong{
   font-weight:400!important;
 }
+
+
+/* ===== Tabs spacing below lead summary ===== */
+.detailTabs{
+  padding-top:8px!important;
+  height:54px!important;
+  align-items:flex-end!important;
+}
