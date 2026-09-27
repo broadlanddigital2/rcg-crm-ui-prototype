@@ -182,3 +182,46 @@
   .railWidget{min-height:54px}
   .railProfile{display:none}
 }
+
+
+/* ===== Lead source hierarchy ===== */
+.secondaryItem.parent{
+  margin-top:8px;
+  min-height:48px;
+  font-weight:800;
+  color:#1e252b;
+  background:transparent;
+}
+.secondaryItem.parent:first-child{margin-top:0}
+.secondaryItem.parent.active{
+  background:#fff;
+  color:#d8171f;
+}
+.secondaryItem.sub{
+  min-height:38px;
+  margin-left:18px;
+  width:calc(100% - 18px);
+  font-size:12px;
+  font-weight:600;
+  color:#626c75;
+  position:relative;
+  padding-left:18px;
+}
+.secondaryItem.sub:before{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:50%;
+  width:8px;
+  height:1px;
+  background:#bcc3c9;
+}
+.secondaryItem.sub:hover{
+  background:#fff;
+  color:#20262c;
+}
+.secondaryItem.sub b{
+  min-width:21px;
+  height:21px;
+  font-size:9px;
+}
